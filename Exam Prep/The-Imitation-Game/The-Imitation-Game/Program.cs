@@ -1,6 +1,5 @@
 ﻿
 
-//List<string> words = Console.ReadLine().Split().ToList();
 
 string word = Console.ReadLine();
 
