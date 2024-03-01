@@ -31,28 +31,35 @@ decimal CalculateSingleWordSum(string word)
         return 0m;
     }
 
-    if (char.IsUpper(firstLetter))
+    if (Char.IsUpper(firstLetter))
     {
         sum = (decimal)num / firstLetterPos;
     }
-    else if (char.IsLower(firstLetter))
+    else if (Char.IsLower(firstLetter))
     {
         sum = (decimal)num * firstLetterPos;
     }
 
-    if (char.IsUpper(lastLetter))
+    if (Char.IsUpper(lastLetter))
     {
         sum -= lastLetterPos;
     }
-    else if(char.IsLower(lastLetter))
+    else if(Char.IsLower(lastLetter))
     {
         sum += lastLetterPos;
     }
 
-    return 1;
+    return sum;
 }
 
-int GetAlphabeticalPositionOfCharacter(char firstLetter)
+int GetAlphabeticalPositionOfCharacter(char ch)
 {
-    throw new NotImplementedException();
+    if (!Char.IsLetter(ch))
+    {
+        return -1;
+    }
+
+    char chCI = Char.ToLowerInvariant(ch);
+
+    return (int)chCI - 96;
 }
