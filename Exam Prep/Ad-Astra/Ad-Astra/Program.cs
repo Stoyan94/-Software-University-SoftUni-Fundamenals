@@ -16,7 +16,5 @@ Console.WriteLine($"You have food to last you for: {totalCalories / 2000} days!"
 
 foreach(Match item in matches)
 {
-    Console.Write($"Item: {item.Groups[2]}, Best before: {item.Groups[3]}, Nutrition: ");    
-    Console.WriteLine();
-    Console.WriteLine($"{item.Groups[4]}");
+    Console.WriteLine($"Item: {item.Groups[2]}, Best before: {item.Groups[3]}, Nutrition: {item.Groups[4]} ");      
 }
