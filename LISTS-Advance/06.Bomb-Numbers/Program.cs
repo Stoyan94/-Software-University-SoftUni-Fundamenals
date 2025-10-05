@@ -30,24 +30,28 @@ namespace _06.Bomb_Numbers
                 int bombIndex = numbers.IndexOf(bombNumber);
     
     
-                // колко можем да махнем вляво (ако бомбата е близо до началото)
+                               // Изчисляваме колко числа можем да махнем вляво от бомбата.
+                // Ако бомбата е близо до началото на списъка, не можем да махнем повече от наличните елементи.
+                // Math.Min гарантира, че няма да излезем извън границите на списъка.
                 int indicesToRemoveLeft = Math.Min(bombPower, bombIndex);
-    
-    
-                // колко можем да махнем вдясно (ако бомбата е близо до края)
+
+                // Изчисляваме колко числа можем да махнем вдясно от бомбата.
+                // Ако бомбата е близо до края, не можем да махнем повече от наличните елементи.
+                // numbers.Count - bombIndex - 1 е броят елементи вдясно от бомбата.
                 int indicesToRemoveRight = Math.Min(bombPower, numbers.Count - bombIndex - 1);
-    
-    
-                // изчисляваме от кой индекс започва махането
+
+                // Изчисляваме от кой индекс започва премахването.
+                // Изваждаме indicesToRemoveLeft, за да започнем от правилния елемент вляво от бомбата.
                 int startIndex = bombIndex - indicesToRemoveLeft;
-    
-    
-                // изчисляваме колко елемента общо да махнем
-                int count = indicesToRemoveLeft + indicesToRemoveRight + 1; // +1 за самата бомба
-    
-    
-                // махаме диапазона от списъка
+
+                // Изчисляваме общия брой елементи, които ще махнем:
+                // indicesToRemoveLeft (вляво) + indicesToRemoveRight (вдясно) + 1 (самата бомба).
+                int count = indicesToRemoveLeft + indicesToRemoveRight + 1;
+
+                // Премахваме диапазон от списъка, започвайки от startIndex, с дължина count.
+                // RemoveRange премахва всички елементи от startIndex до (startIndex + count - 1).
                 numbers.RemoveRange(startIndex, count);
+
             }
     
             // Накрая печатаме сумата на останалите елементи
